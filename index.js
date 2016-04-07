@@ -124,6 +124,10 @@ class Swipeout extends React.Component {
 
     if (btn.props && btn.props.onPress) btn.props.onPress();
     if (btn.autoClose) this.handleClose(speedDefault*2);
+    this.setState({ // added this setState to 'close' the buttons
+      leftOpen: false,
+      rightOpen: false,
+    });    
   }
   handleClose(duration) {
     let { onClose } = this.props;
@@ -216,8 +220,8 @@ class Swipeout extends React.Component {
       scroll,
     } = this.state;
 
-    let leftVisible = value > 5;
-    let rightVisible = value < 5;
+    let leftVisible = value > 0;
+    let rightVisible = value < 0;
     let panning = leftVisible || rightVisible;
     if (scroll && panning) this.handleStart();
 
