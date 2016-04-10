@@ -122,12 +122,15 @@ class Swipeout extends React.Component {
   handleBtnPress(btn) {
     let { speedDefault } = this.state;
 
+    if (btn.autoClose) {
+      this.setState({ // added this setState to 'close' the buttons
+        leftOpen: false,
+        rightOpen: false,
+      });
+    }
+
     if (btn.props && btn.props.onPress) btn.props.onPress();
     if (btn.autoClose) this.handleClose(speedDefault*2);
-    this.setState({ // added this setState to 'close' the buttons
-      leftOpen: false,
-      rightOpen: false,
-    });    
   }
   handleClose(duration) {
     let { onClose } = this.props;
