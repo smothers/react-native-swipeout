@@ -200,7 +200,7 @@ class Swipeout extends React.Component {
     this.setState({ scroll: false })
   }
   measureSwipeout() {
-    this.refs.swipeout.measure((a, b, width, height, px, py) => {
+    this.refs && this.refs.swipeout && this.refs.swipeout.measure((a, b, width, height, px, py) => {
       let {
         left,
         right,
